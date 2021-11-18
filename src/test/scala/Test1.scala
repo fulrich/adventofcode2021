@@ -1,6 +1,8 @@
-import org.junit.Test
-import org.junit.Assert.*
+import org.scalatest._
+import matchers.should.Matchers._
+import org.scalatest.funsuite.AnyFunSuite
 
-class Test1:
-  @Test def t1(): Unit = 
-    assertEquals("I was compiled by Scala 3. :)", msg)
+class Test1 extends AnyFunSuite:
+  test("Simple test") {
+    msg shouldBe "I was compiled by Scala 3. :)"
+  }
