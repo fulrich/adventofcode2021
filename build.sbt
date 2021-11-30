@@ -1,4 +1,5 @@
 val scala3Version = "3.1.0"
+val scalacticVersion = "3.2.10"
 
 lazy val root = project
   .in(file("."))
@@ -9,6 +10,7 @@ lazy val root = project
     scalaVersion := scala3Version,
 
     libraryDependencies ++= Seq(
-    "org.scalatest" %% "scalatest" % "3.2.10" % Test
+      "org.scalactic" %% "scalactic" % scalacticVersion,
+      "org.scalatest" %% "scalatest" % scalacticVersion % Test
     )
   )
