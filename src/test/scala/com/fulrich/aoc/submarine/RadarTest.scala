@@ -19,28 +19,22 @@ class RadarTest extends AnyFunSuite:
     "263"
   )
 
-  test("Can count the numbef of increasing window values in the real file") {
+  test("Day 1 - Part 1: Solution") {
     val depths = PuzzleInput.fromResource("day_1")
 
-    Radar.increasingDepthWindows(depths) shouldBe 1497
+    Radar.countIncreasingDepths(depths) shouldBe 1462
   }
 
-  test("Can count the numbef of increasing window values in the test data") {
-    Radar.increasingDepthWindows(testData) shouldBe 5
-  }
-
-  test("Can count the number of increasing values in the real file") {
+  test("Day 1 - Part 2: Soution") {
     val depths = PuzzleInput.fromResource("day_1")
 
-    Radar.increasingDepths(depths) shouldBe 1462
+    Radar.countIncreasingDepths(depths, windowSize = 3) shouldBe 1497
   }
 
-  test("Can count the number of increasing values in the test data") {
-    Radar.increasingDepths(testData) shouldBe 7
+  test("Can count the numbef of increasing depths for a different window size") {
+    Radar.countIncreasingDepths(testData, windowSize = 3) shouldBe 5
   }
 
-  test("Can count the number of increasing values in a sequence of depths") {
-    val depths = PuzzleInput("200", "210", "190", "208")
-
-    Radar.increasingDepths(depths) shouldBe 2
+  test("Can count the number of increasing values for the default window size") {
+    Radar.countIncreasingDepths(testData) shouldBe 7
   }
