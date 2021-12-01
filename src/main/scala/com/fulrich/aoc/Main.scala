@@ -1,7 +1,9 @@
 package com.fulrich.aoc
 
+import input.PuzzleInput
+
 object Main:
   def main(args: Array[String]): Unit = {
     val configuration = new CommandLineConfig(args)
-    ResourceLoader.asLines(configuration.resource()).foreach(println)
+    PuzzleInput.fromConfiguration(configuration).raw.foreach(println)
   }
