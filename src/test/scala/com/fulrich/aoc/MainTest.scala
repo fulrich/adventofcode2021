@@ -20,7 +20,7 @@ class MainTest extends AnyFunSuite:
     val stream = new java.io.ByteArrayOutputStream()
 
     Console.withOut(stream) {
-      Main.main(Array("--resource", "other_test"))
+      Main.main(Array("--resource", "test_resource"))
     }
 
     stream.toString should include ("Testing Resources!")
