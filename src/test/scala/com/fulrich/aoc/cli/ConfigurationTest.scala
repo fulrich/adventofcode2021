@@ -7,6 +7,10 @@ import com.fulrich.aoc.input._
 import com.fulrich.aoc.FileTesting
 
 class MainTest extends AnyFunSuite with FileTesting:
+  test("Passing the day and part flags will set which problem to run") {
+    configuration("--day", "5", "--part", "2").puzzleSelection shouldBe PuzzleSelection(5, 2)
+  }
+
   test("Passing a resource flag will create a ResourceInput") {
     configuration("--resource", "test").inputRequest shouldBe ResourceRequest("test")
   }
