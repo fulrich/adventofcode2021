@@ -9,7 +9,7 @@ class MainTest extends AnyFunSuite:
     val stream = new java.io.ByteArrayOutputStream()
 
     Console.withOut(stream) {
-      Main.main(Array("--resource", "day_1"))
+      Main.main(Array("--resource", "day_1", "--day", "1", "--part", "2"))
     }
 
     stream.toString should include ("1462")
