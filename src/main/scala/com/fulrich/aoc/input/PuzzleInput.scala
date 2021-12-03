@@ -6,8 +6,7 @@ import java.io.File
 import java.nio.file.{Files, Paths}
 import scala.collection.JavaConverters._
 
-case class PuzzleInput(raw: Seq[String]):
-  def toInt: Seq[Int] = raw.map(_.toInt)
+case class PuzzleInput(raw: Seq[String])
 
 object PuzzleInput:
   @targetName("variable")

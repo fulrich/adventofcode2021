@@ -3,7 +3,6 @@ package com.fulrich.aoc.submarine.helm
 import org.scalatest._
 import matchers.should.Matchers._
 import org.scalatest.funsuite.AnyFunSuite
-import com.fulrich.aoc.input.PuzzleInput
 import com.fulrich.aoc.submarine.Position
 
 class HelmTest extends AnyFunSuite:

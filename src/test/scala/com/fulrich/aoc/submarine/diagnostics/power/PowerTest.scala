@@ -3,7 +3,6 @@ package com.fulrich.aoc.submarine.diagnostics.power
 import org.scalatest._
 import matchers.should.Matchers._
 import org.scalatest.funsuite.AnyFunSuite
-import com.fulrich.aoc.input.PuzzleInput
 import com.fulrich.aoc.submarine.diagnostics.DiagnosticData
 
 class PowerConsumptionTest extends AnyFunSuite:

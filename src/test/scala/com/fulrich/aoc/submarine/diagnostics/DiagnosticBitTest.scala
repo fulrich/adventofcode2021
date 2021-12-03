@@ -3,7 +3,6 @@ package com.fulrich.aoc.submarine.diagnostics
 import org.scalatest._
 import matchers.should.Matchers._
 import org.scalatest.funsuite.AnyFunSuite
-import com.fulrich.aoc.input.PuzzleInput
 
 class DiagnosticBitTest extends AnyFunSuite:
   val diagnosticBit = DiagnosticBit.empty

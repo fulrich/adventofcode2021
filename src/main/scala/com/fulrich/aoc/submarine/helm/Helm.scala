@@ -1,12 +1,8 @@
 package com.fulrich.aoc.submarine.helm
 
-import com.fulrich.aoc.input.PuzzleInput
 import com.fulrich.aoc.submarine.Position
 
 class Helm:
-  def navigate(input: PuzzleInput, position: Position): Position =
-    navigate(HelmCommand.parseList(input.raw), position)
-
   def navigate(commandList: Seq[HelmCommand], position: Position): Position =
     commandList.foldLeft(position)(navigate)
 

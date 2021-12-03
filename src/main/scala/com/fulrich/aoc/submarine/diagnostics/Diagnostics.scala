@@ -9,8 +9,6 @@ case class Diagnostics(
 )
 
 object Diagnostics:
-  def apply(input: Seq[String]): Diagnostics = apply(DiagnosticData.from(input))
-
   def apply(data: DiagnosticData): Diagnostics = 
     Diagnostics(
       power = Power(data),

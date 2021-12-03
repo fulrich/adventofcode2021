@@ -3,7 +3,6 @@ package com.fulrich.aoc.submarine.diagnostics
 import org.scalatest._
 import matchers.should.Matchers._
 import org.scalatest.funsuite.AnyFunSuite
-import com.fulrich.aoc.input.PuzzleInput
 
 class DiagnosticDataTest extends AnyFunSuite:
   test("Can track the diagnostics for a set of binary values") {

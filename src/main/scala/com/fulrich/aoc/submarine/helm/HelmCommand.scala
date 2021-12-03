@@ -6,8 +6,6 @@ case class Down(value: Int) extends HelmCommand
 case class Up(value: Int) extends HelmCommand
 
 object HelmCommand:
-  def parseList(inputs: Seq[String]): Seq[HelmCommand] = inputs.map(parse)
-
   def parse(input: String): HelmCommand = input.split(" ").toSeq match {
     case Seq("forward", a) => Forward(a.toInt)
     case Seq("down", a) => Down(a.toInt)
