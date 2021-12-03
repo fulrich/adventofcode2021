@@ -20,5 +20,7 @@ object Main:
       val position = Submarine().navigate(input).position
       println(position.horizontal * position.depth)
     }
+    case PuzzleSelection(3, 1) => println(Submarine().diagnose(input).power.consumption)
+    case PuzzleSelection(3, 2) => println(Submarine().diagnose(input).lifeSupport.rating)
     case _ => println(s"No solution exists for Day ${selection.day} - Part ${selection.part}.")
   }
