@@ -3,21 +3,26 @@ package com.fulrich.aoc.cli
 import org.scalatest._
 import matchers.should.Matchers._
 import org.scalatest.funsuite.AnyFunSuite
-import com.fulrich.aoc.input._
 import com.fulrich.aoc.FileTesting
+import com.fulrich.aoc.input._
 
-class MainTest extends AnyFunSuite with FileTesting:
-  test("Passing the day and part flags will set which problem to run") {
-    configuration("--day", "5", "--part", "2").puzzleSelection shouldBe PuzzleSelection(5, 2)
+class ConfigurationTest extends AnyFunSuite with Inside with FileTesting:
+  test("Calling the puzzle subcommand will create an AocPuzzle selection") {
+    val config = configuration("puzzle", "--day", "3", "--part", "2")
+    
+    config.selection shouldBe a [AocPuzzle]
+    inside(config.selection) { case selection: AocPuzzle =>
+      selection.day shouldBe 3
+      selection.part shouldBe 2
+    }
   }
 
-  test("Passing a resource flag will create a ResourceInput") {
-    configuration("--resource", "test").inputRequest shouldBe ResourceRequest("test")
-  }
+  test("Calling the submarine subcommand will create an SubmarineCommand selection") {
+    val config = configuration("submarine", "navigate", "--resource", "day_1")
 
-  test("Passing a file flag will create a FileInput") {
-    withFile { file =>
-      configuration("--file", file.getPath).inputRequest shouldBe FileRequest(file)
+    config.selection shouldBe a [SubmarineCommand]
+    inside(config.selection) { case selection: SubmarineCommand =>
+      selection.command shouldBe "navigate"
     }
   }
 

@@ -7,22 +7,27 @@ import submarine.helm.HelmCommand
 
 object Main:
   def main(args: Array[String]): Unit = {
-    val configuration = new cli.Configuration(args)
-    val puzzleSelection = configuration.puzzleSelection
-    val puzzleInput = PuzzleInput.fromInputRequest(configuration.inputRequest)
-
-    solve(puzzleSelection, puzzleInput)
+    new cli.Configuration(args).selection match {
+      case selection: AocPuzzle => solve(selection)
+      case selection: SubmarineCommand => println(submarine(selection))
+      case Unknown => println("An unknown entry was found.")
+    }
   }
 
-  def solve(selection: PuzzleSelection, input: PuzzleInput): Unit = selection match {
-    case PuzzleSelection(1, 1) => println(Submarine().radar.depthScan(input))
-    case PuzzleSelection(1, 2) => println(Submarine().radar.depthScan(input))
-    case PuzzleSelection(2, 1) => println(Submarine().navigate(input))
-    case PuzzleSelection(2, 2) => {
+  def submarine(selection: SubmarineCommand, submarine: Submarine = Submarine()): Submarine = selection match {
+    case SubmarineCommand("navigate", input) => submarine.navigate(input)
+    case _ => submarine
+  }
+
+  def solve(selection: AocPuzzle): Unit = selection match {
+    case AocPuzzle(1, 1, input) => println(Submarine().radar.depthScan(input))
+    case AocPuzzle(1, 2, input) => println(Submarine().radar.depthScan(input))
+    case AocPuzzle(2, 1, input) => println(Submarine().navigate(input))
+    case AocPuzzle(2, 2, input) => {
       val position = Submarine().navigate(input).position
       println(position.horizontal * position.depth)
     }
-    case PuzzleSelection(3, 1) => println(Submarine().diagnose(input).power.consumption)
-    case PuzzleSelection(3, 2) => println(Submarine().diagnose(input).lifeSupport.rating)
+    case AocPuzzle(3, 1, input) => println(Submarine().diagnose(input).power.consumption)
+    case AocPuzzle(3, 2, input) => println(Submarine().diagnose(input).lifeSupport.rating)
     case _ => println(s"No solution exists for Day ${selection.day} - Part ${selection.part}.")
   }
