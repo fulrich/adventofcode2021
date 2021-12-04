@@ -22,15 +22,17 @@ object Main:
     case _ => SubmarineResult(submarine, selection)
   }
 
-  def solve(selection: AocPuzzle): ExecutionResult[Any] = selection match {
-    case AocPuzzle(1, 1, input) => AocPuzzleResult(Submarine().radar.depthScan(input), selection)
-    case AocPuzzle(1, 2, input) => AocPuzzleResult(Submarine().radar.depthScan(input), selection)
-    case AocPuzzle(2, 1, input) => AocPuzzleResult(Submarine().navigate(input), selection)
+  def solve(selection: AocPuzzle, submarine: Submarine = Submarine()): ExecutionResult[Any] = selection match {
+    case AocPuzzle(1, 1, input) => AocPuzzleResult(submarine.radar.depthScan(input), selection)
+    case AocPuzzle(1, 2, input) => AocPuzzleResult(submarine.radar.depthScan(input), selection)
+    case AocPuzzle(2, 1, input) => AocPuzzleResult(submarine.navigate(input), selection)
     case AocPuzzle(2, 2, input) => {
-      val position = Submarine().navigate(input).position
+      val position = submarine.navigate(input).position
       AocPuzzleResult(position.horizontal * position.depth, selection)
     }
-    case AocPuzzle(3, 1, input) => AocPuzzleResult(Submarine().diagnose(input).power.consumption, selection)
-    case AocPuzzle(3, 2, input) => AocPuzzleResult(Submarine().diagnose(input).lifeSupport.rating, selection)
+    case AocPuzzle(3, 1, input) => AocPuzzleResult(submarine.diagnose(input).power.consumption, selection)
+    case AocPuzzle(3, 2, input) => AocPuzzleResult(submarine.diagnose(input).lifeSupport.rating, selection)
+    case AocPuzzle(4, 1, input) => AocPuzzleResult(submarine.entertainmentSystem.bingo(input).play().score, selection)
+    case AocPuzzle(4, 2, input) => AocPuzzleResult(submarine.entertainmentSystem.bingo(input).playToLose().score, selection)
     case _ => AocPuzzleResult(s"No solution exists for Day ${selection.day} - Part ${selection.part}.", selection)
   }
