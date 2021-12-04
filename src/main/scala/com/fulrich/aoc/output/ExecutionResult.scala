@@ -6,14 +6,14 @@ import com.fulrich.aoc.input.SubmarineCommand
 trait ExecutionResult[A]:
   def output: Unit
 
-case class AocPuzzleResult[A](result: A, input: AocPuzzle) extends ExecutionResult[A]:
+case class AocPuzzleResult[A](result: A)(implicit input: AocPuzzle) extends ExecutionResult[A]:
   override def output: Unit = {
     println("##### AoC Puzzle #####")
     println(s"Day ${input.day} - Part ${input.part}")
     println(s"Answer: $result")
   }
 
-case class SubmarineResult[A](result: A, input: SubmarineCommand) extends ExecutionResult[A]:
+case class SubmarineResult[A](result: A)(implicit input: SubmarineCommand) extends ExecutionResult[A]:
   override def output: Unit = {
     println("##### Submarine Command #####")
     println(s"Executing Command: ${input.command}")
