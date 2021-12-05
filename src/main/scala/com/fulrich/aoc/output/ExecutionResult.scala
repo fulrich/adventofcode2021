@@ -22,3 +22,10 @@ case class SubmarineResult[A](result: A)(implicit input: SubmarineCommand) exten
 
 case class UnknownResult(error: String) extends ExecutionResult[String]:
   override def output: Unit = println(error)
+
+object ExecutionResult:
+  implicit def toSubmarineResult[A](result: A)(implicit input: SubmarineCommand): SubmarineResult[A] = 
+    SubmarineResult(result)
+  
+  implicit def toAocPuzzleResult[A](result: A)(implicit input: AocPuzzle): AocPuzzleResult[A] = 
+    AocPuzzleResult(result)
