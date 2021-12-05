@@ -5,7 +5,7 @@ import com.fulrich.aoc.submarine.helm.HelmCommand
 import com.fulrich.aoc.submarine.entertainment.bingo.{Card, GameSetup}
 import com.fulrich.aoc.input.DataInput
 
-object Serialization:
+object Deserialization:
   given toSeqInt: Conversion[DataInput, Seq[Int]] with
     def apply(input: DataInput): Seq[Int] = input.raw.map(_.toInt)
 

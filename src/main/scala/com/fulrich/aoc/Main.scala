@@ -1,7 +1,8 @@
 package com.fulrich.aoc
 
 import input._
-import com.fulrich.aoc.input.Serialization.given
+import com.fulrich.aoc.input.Deserialization.given
+import com.fulrich.aoc.output.Serialization.given
 import submarine.Submarine
 import submarine.helm.HelmCommand
 import output._
