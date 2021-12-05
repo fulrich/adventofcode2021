@@ -8,7 +8,7 @@ import entertainment._
 
 case class Submarine(
     position: Position = Position.origin,
-    radar: Radar = new Radar,
+    sensors: Sensors = new Sensors,
     helm: Helm = new Helm,
     entertainmentSystem: EntertainmentSystem = new EntertainmentSystem):
   

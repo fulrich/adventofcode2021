@@ -1,4 +1,4 @@
-package com.fulrich.aoc.submarine.sensors
+package com.fulrich.aoc.submarine.sensors.radar
 
 import org.scalatest._
 import matchers.should.Matchers._

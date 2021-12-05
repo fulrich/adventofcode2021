@@ -1,4 +1,4 @@
-package com.fulrich.aoc.submarine.sensors
+package com.fulrich.aoc.submarine.sensors.radar
 
 class Radar:
   def depthScan(depths: Seq[Int], windowSize: Int = 1): Int = 

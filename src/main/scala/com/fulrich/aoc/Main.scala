@@ -23,13 +23,12 @@ object Main:
   }
 
   def solve(submarine: Submarine)(implicit selection: AocPuzzle): AocPuzzleResult[_] = selection match {
-    case AocPuzzle(1, 1, input) => submarine.radar.depthScan(input)
-    case AocPuzzle(1, 2, input) => submarine.radar.depthScan(input)
-    case AocPuzzle(2, 1, input) => submarine.navigate(input)
-    case AocPuzzle(2, 2, input) => submarine.navigate(input).position.calculate
+    case AocPuzzle(1, _, input) => submarine.sensors.radar.depthScan(input)
+    case AocPuzzle(2, _, input) => submarine.navigate(input).position.calculate
     case AocPuzzle(3, 1, input) => submarine.diagnose(input).power.consumption
     case AocPuzzle(3, 2, input) => submarine.diagnose(input).lifeSupport.rating
     case AocPuzzle(4, 1, input) => submarine.entertainmentSystem.bingo(input).play().score
     case AocPuzzle(4, 2, input) => submarine.entertainmentSystem.bingo(input).playToLose().score
+    case AocPuzzle(5, _, input) => submarine.sensors.vents(input).intersectionsOver(2).length
     case _ => s"No solution exists for Day ${selection.day} - Part ${selection.part}."
   }
