@@ -12,6 +12,9 @@ object Serialization:
   given Serialization[Int] with
     def serialize(value: Int): String = value.toString
 
+  given Serialization[Long] with
+    def serialize(value: Long): String = value.toString
+
   given Serialization[Submarine] with
     def serialize(value: Submarine): String = {
       s"""

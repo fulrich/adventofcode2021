@@ -31,5 +31,7 @@ object Main:
     case AocPuzzle(4, 1, input) => submarine.entertainmentSystem.bingo(input).play().score
     case AocPuzzle(4, 2, input) => submarine.entertainmentSystem.bingo(input).playToLose().score
     case AocPuzzle(5, _, input) => submarine.sensors.vents(input).intersectionsOver(2).length
+    case AocPuzzle(6, 1, input) => submarine.window.lanternfish(input.raw.head).observeOver(80).totalFish
+    case AocPuzzle(6, 2, input) => submarine.window.lanternfish(input.raw.head).observeOver(256).totalFish
     case _ => s"No solution exists for Day ${selection.day} - Part ${selection.part}."
   }
