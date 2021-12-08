@@ -4,7 +4,7 @@ import org.scalatest._
 import matchers.should.Matchers._
 import org.scalatest.funsuite.AnyFunSuite
 
-class AocDefaultsTest extends AnyFunSuite:
+class SchoolTest extends AnyFunSuite:
   val initialFish = Seq[Long](3, 4, 3, 1, 2)
 
   test("Can load the initial school of fish from a seq of integers") {

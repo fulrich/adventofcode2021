@@ -33,5 +33,6 @@ object Main:
     case AocPuzzle(5, _, input) => submarine.sensors.vents(input).intersectionsOver(2).length
     case AocPuzzle(6, 1, input) => submarine.window.lanternfish(input.raw.head).observeOver(80).totalFish
     case AocPuzzle(6, 2, input) => submarine.window.lanternfish(input.raw.head).observeOver(256).totalFish
+    case AocPuzzle(7, _, input) => submarine.window.crabs(input.raw.head).cheapestAlignment.fuel
     case _ => s"No solution exists for Day ${selection.day} - Part ${selection.part}."
   }
