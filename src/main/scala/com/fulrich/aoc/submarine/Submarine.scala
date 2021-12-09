@@ -5,6 +5,7 @@ import helm._
 import diagnostics._
 import entertainment._
 import window._
+import com.fulrich.aoc.submarine.displays.Displays
 
 
 case class Submarine(
@@ -17,3 +18,5 @@ case class Submarine(
   def navigate(commands: Seq[HelmCommand]): Submarine = copy(position = helm.navigate(commands, position))
 
   def diagnose(diagnosticData: DiagnosticData): Diagnostics = Diagnostics(diagnosticData)
+
+  def displays(displaySequence: Seq[String]): Displays = Displays.parse(displaySequence)
