@@ -38,5 +38,7 @@ object Main:
     case AocPuzzle(8, 2, input) => submarine.displays(input).total
     case AocPuzzle(9, 1, input) => submarine.sensors.heatmap(input).lowPointsRisk
     case AocPuzzle(9, 2, input) => submarine.sensors.heatmap(input).areaOfLargestBasins(numberOfBasins = 3)
+    case AocPuzzle(10, 1, input) => submarine.helm.navigation.validateSyntax(input).validationScore
+    case AocPuzzle(10, 2, input) => submarine.helm.navigation.validateSyntax(input).autoCompleteScore
     case _ => s"No solution exists for Day ${selection.day} - Part ${selection.part}."
   }

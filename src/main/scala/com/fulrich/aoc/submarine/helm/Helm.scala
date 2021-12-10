@@ -1,8 +1,9 @@
 package com.fulrich.aoc.submarine.helm
 
 import com.fulrich.aoc.submarine.Position
+import navigation.NavigationSystem
 
-class Helm:
+class Helm(val navigation: NavigationSystem = new NavigationSystem):
   def navigate(commandList: Seq[HelmCommand], position: Position): Position =
     commandList.foldLeft(position)(navigate)
 
