@@ -36,5 +36,7 @@ object Main:
     case AocPuzzle(7, _, input) => submarine.window.crabs(input.raw.head).cheapestAlignment.fuel
     case AocPuzzle(8, 1, input) => submarine.displays(input).countDigits(1, 4, 7, 8)
     case AocPuzzle(8, 2, input) => submarine.displays(input).total
+    case AocPuzzle(9, 1, input) => submarine.sensors.heatmap(input).lowPointsRisk
+    case AocPuzzle(9, 2, input) => submarine.sensors.heatmap(input).areaOfLargestBasins(numberOfBasins = 3)
     case _ => s"No solution exists for Day ${selection.day} - Part ${selection.part}."
   }

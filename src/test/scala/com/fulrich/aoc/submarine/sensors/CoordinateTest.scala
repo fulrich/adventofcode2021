@@ -1,4 +1,4 @@
-package com.fulrich.aoc.submarine.sensors.vents
+package com.fulrich.aoc.submarine.sensors
 
 import org.scalatest._
 import matchers.should.Matchers._

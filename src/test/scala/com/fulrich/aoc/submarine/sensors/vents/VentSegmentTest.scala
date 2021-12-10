@@ -3,6 +3,7 @@ package com.fulrich.aoc.submarine.sensors.vents
 import org.scalatest._
 import matchers.should.Matchers._
 import org.scalatest.funsuite.AnyFunSuite
+import com.fulrich.aoc.submarine.sensors.Coordinate
 
 class VentSegmentTest extends AnyFunSuite with LoneElement:
   test("Can create a vent segment from a string") {

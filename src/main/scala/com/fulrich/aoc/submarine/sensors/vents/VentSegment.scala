@@ -1,5 +1,7 @@
 package com.fulrich.aoc.submarine.sensors.vents
 
+import com.fulrich.aoc.submarine.sensors.Coordinate
+
 case class VentSegment(start: Coordinate, end: Coordinate):
   lazy val points: Seq[Coordinate] = if validAngle then build else Seq.empty
 
