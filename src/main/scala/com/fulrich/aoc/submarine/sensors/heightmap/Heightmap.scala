@@ -1,16 +1,13 @@
 package com.fulrich.aoc.submarine.sensors.heightmap
 
-import com.fulrich.aoc.submarine.sensors.Coordinate
+import com.fulrich.aoc.algebra.{Grid, Coordinate}
 
-case class Heightmap(private val full: Map[Coordinate, Height]):
-  def at(coordinate: Coordinate): Option[Height] = full.get(coordinate)
-  def at(x: Int, y: Int): Option[Height] = at(Coordinate(x, y))
-
+case class Heightmap(private val full: Grid[Height]):
   lazy val heights: Seq[Height] = full.values.toSeq
   lazy val lowHeights: Seq[Height] = heights.filter(isLow)
   lazy val lowPointsRisk: Int = lowHeights.map(_.height).map(_ + 1).sum
 
-  lazy val basins: Seq[Basin] = lowHeights.map(Basin.fromLow(_, this))
+  lazy val basins: Seq[Basin] = lowHeights.map(Basin.fromLow(_, full))
 
   def areaOfLargestBasins(numberOfBasins: Int): Int = basins
     .sorted
@@ -18,15 +15,11 @@ case class Heightmap(private val full: Map[Coordinate, Height]):
     .foldLeft(1) { case (total, basin) => total * basin.size }
 
   private def isLow(coordinate: Height): Boolean = coordinate.at.adjacent
-    .flatMap(at)
+    .flatMap(full.at)
     .map(_.height > coordinate.height)
     .reduce(_ && _)
 
 object Heightmap:
   def parse(input: Seq[String]): Heightmap = Heightmap(
-    input.zipWithIndex.flatMap { (row, y) =>
-      row.toSeq.zipWithIndex.map { (height, x) =>
-        Coordinate(x, y) -> Height(Coordinate(x, y), height.asDigit)
-      }
-    }.toMap
+    Grid.parse(input) { case (coordinate, value) => Height(coordinate, value.asDigit) }
   )

@@ -1,6 +1,6 @@
 package com.fulrich.aoc.submarine.sensors.heightmap
 
-import com.fulrich.aoc.submarine.sensors.Coordinate
+import com.fulrich.aoc.algebra.Coordinate
 
 case class  Height(at: Coordinate, height: Int)
 

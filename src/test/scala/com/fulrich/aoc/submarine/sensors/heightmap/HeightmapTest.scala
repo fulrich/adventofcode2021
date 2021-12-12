@@ -37,31 +37,3 @@ class HeightmapTest extends AnyFunSuite:
       Height(x = 6, y = 4, height = 5)
     )
   }
-
-  test("Can access any heights based on coordinate") {
-    heightMap.at(0, 0) should contain (Height(0, 0, 2))
-    heightMap.at(0, 1) should contain (Height(0, 1, 3))
-    heightMap.at(0, 2) should contain (Height(0, 2, 9))
-    heightMap.at(0, 3) should contain (Height(0, 3, 8))
-    heightMap.at(0, 4) should contain (Height(0, 4, 9))
-
-    heightMap.at(0, 0) should contain (Height(0, 0, 2))
-    heightMap.at(1, 1) should contain (Height(1, 1, 9))
-    heightMap.at(2, 2) should contain (Height(2, 2, 5))
-    heightMap.at(3, 3) should contain (Height(3, 3, 7))
-    heightMap.at(4, 4) should contain (Height(4, 4, 9))
-
-    heightMap.at(0, 3) should contain (Height(0, 3, 8))
-    heightMap.at(1, 3) should contain (Height(1, 3, 7))
-    heightMap.at(2, 3) should contain (Height(2, 3, 6))
-    heightMap.at(3, 3) should contain (Height(3, 3, 7))
-    heightMap.at(4, 3) should contain (Height(4, 3, 8))
-  }
-
-  test("If there is no value at the requested point a None is returned") {
-    heightMap.at(-1, 0) shouldBe empty
-    heightMap.at(0, -1) shouldBe empty
-
-    heightMap.at(9, 5) shouldBe empty
-    heightMap.at(10, 4) shouldBe empty
-  }

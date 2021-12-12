@@ -1,7 +1,7 @@
 package com.fulrich.aoc.submarine.sensors.vents
 
 import scala.annotation.targetName
-import com.fulrich.aoc.submarine.sensors.Coordinate
+import com.fulrich.aoc.algebra.Coordinate
 
 case class Vent(segments: Seq[VentSegment]):
   def intersectionsOver(minimum: Int): Seq[Coordinate] =
