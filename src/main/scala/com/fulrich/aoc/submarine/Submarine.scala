@@ -5,6 +5,7 @@ import helm._
 import diagnostics._
 import entertainment._
 import window._
+import hull._
 import com.fulrich.aoc.submarine.displays.Displays
 
 
@@ -13,7 +14,8 @@ case class Submarine(
     sensors: Sensors = new Sensors,
     helm: Helm = new Helm,
     entertainmentSystem: EntertainmentSystem = new EntertainmentSystem,
-    window: Window = new Window):
+    window: Window = new Window,
+    hull: Hull = new Hull):
   
   def navigate(commands: Seq[HelmCommand]): Submarine = copy(position = helm.navigate(commands, position))
 

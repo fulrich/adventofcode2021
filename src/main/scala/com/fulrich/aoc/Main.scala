@@ -45,5 +45,7 @@ object Main:
     case AocPuzzle(12, _, input) => submarine.helm.navigation.subterraneanScan(input).paths.length
     case AocPuzzle(13, 1, input) => submarine.sensors.thermalCamera(input).fold(1).visibleDots
     case AocPuzzle(13, 2, input) => submarine.sensors.thermalCamera(input).fold()
+    case AocPuzzle(14, 1, input) => submarine.hull.polymerization(input).steps(10).commonalityDifference
+    case AocPuzzle(14, 2, input) => submarine.hull.polymerization(input).steps(40).commonalityDifference
     case _ => s"No solution exists for Day ${selection.day} - Part ${selection.part}."
   }
