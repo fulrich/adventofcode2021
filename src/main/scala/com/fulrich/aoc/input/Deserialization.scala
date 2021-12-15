@@ -30,3 +30,4 @@ object Deserialization:
 
       GameSetup(draws = draws, cards = cards)
     }
+    

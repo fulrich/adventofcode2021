@@ -1,10 +1,15 @@
 package com.fulrich.aoc.algebra
 
 case class Coordinate(x: Int, y: Int):
-  lazy val up: Coordinate = copy(y = y - 1)
-  lazy val down: Coordinate = copy(y = y + 1)
-  lazy val left: Coordinate = copy(x = x - 1)
-  lazy val right: Coordinate = copy(x = x + 1)
+  def up(amount: Int): Coordinate = copy(y = y - amount)
+  def down(amount: Int): Coordinate = copy(y = y + amount)
+  def left(amount: Int): Coordinate = copy(x = x - amount)
+  def right(amount: Int): Coordinate = copy(x = x + amount)
+
+  lazy val up: Coordinate = up(1)
+  lazy val down: Coordinate = down(1)
+  lazy val left: Coordinate = left(1)
+  lazy val right: Coordinate = right(1)
 
   lazy val upLeft: Coordinate = up.left
   lazy val upRight: Coordinate = up.right

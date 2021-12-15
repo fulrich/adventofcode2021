@@ -42,6 +42,8 @@ object Main:
     case AocPuzzle(10, 2, input) => submarine.helm.navigation.validateSyntax(input).autoCompleteScore
     case AocPuzzle(11, 1, input) => submarine.window.octopuses(input).observeOver(100).flashes
     case AocPuzzle(11, 2, input) => submarine.window.octopuses(input).synchronizationStep()
-    case AocPuzzle(12, 1, input) => submarine.helm.navigation.subterraneanScan(input).paths.length
+    case AocPuzzle(12, _, input) => submarine.helm.navigation.subterraneanScan(input).paths.length
+    case AocPuzzle(13, 1, input) => submarine.sensors.thermalCamera(input).fold(1).visibleDots
+    case AocPuzzle(13, 2, input) => submarine.sensors.thermalCamera(input).fold()
     case _ => s"No solution exists for Day ${selection.day} - Part ${selection.part}."
   }
