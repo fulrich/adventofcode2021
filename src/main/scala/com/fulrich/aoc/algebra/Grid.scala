@@ -7,10 +7,15 @@ case class Grid[+A](private val points: Map[Coordinate, A]):
   lazy val width = maximumColumn + 1
   lazy val height = maximumRow + 1
 
+  def apply(x: Int, y: Int): A = apply(Coordinate(x, y))
+  def apply(coordinate: Coordinate): A = points(coordinate)
+
   def at(x: Int, y: Int): Option[A] = at(Coordinate(x, y))
   def at(coordinate: Coordinate): Option[A] = points.get(coordinate)
 
   def contains(key: Coordinate): Boolean = points.contains(key)
+
+  def updated[B >: A](key: Coordinate, value: B): Grid[B] = copy(points = points.updated(key, value))
 
   lazy val keys: Seq[Coordinate] = points.keys.toSeq
   lazy val values: Seq[A] = points.values.toSeq
@@ -55,6 +60,11 @@ case class Grid[+A](private val points: Map[Coordinate, A]):
     coordinate.copy(x = coordinate.x + (maximumColumn - (coordinate.x * 2)))
   }
 
+  def moveDown(movement: Int): Grid[A] = mapKeys(_.down(movement))
+  def moveUp(movement: Int): Grid[A] = mapKeys(_.up(movement))
+  def moveRight(movement: Int): Grid[A] = mapKeys(_.right(movement))
+  def moveLeft(movement: Int): Grid[A] = mapKeys(_.left(movement))
+
   def transformAt[B >: A](positions: Seq[Coordinate])(f: B => B): Grid[B] = 
     if positions.isEmpty then this 
     else Grid(
@@ -64,6 +74,7 @@ case class Grid[+A](private val points: Map[Coordinate, A]):
       } }
     )
   
+  def merge[B >: A](other: Grid[B]): Grid[B] = Grid(points ++ other.points)
   def merge[B >: A](grid: Grid[B])(f: (B, B) => B): Grid[B] = Grid(
     (keys ++ grid.keys).distinct.collect { coordinate =>  (at(coordinate), grid.at(coordinate)) match {
       case (Some(value), None) => coordinate -> value
