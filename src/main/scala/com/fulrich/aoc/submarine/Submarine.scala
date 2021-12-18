@@ -7,6 +7,7 @@ import entertainment._
 import window._
 import hull._
 import com.fulrich.aoc.submarine.displays.Displays
+import communications._
 
 
 case class Submarine(
@@ -15,7 +16,8 @@ case class Submarine(
     helm: Helm = new Helm,
     entertainmentSystem: EntertainmentSystem = new EntertainmentSystem,
     window: Window = new Window,
-    hull: Hull = new Hull):
+    hull: Hull = new Hull,
+    communications: Communications = new Communications):
   
   def navigate(commands: Seq[HelmCommand]): Submarine = copy(position = helm.navigate(commands, position))
 

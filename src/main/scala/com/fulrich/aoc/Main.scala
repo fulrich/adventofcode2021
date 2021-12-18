@@ -49,5 +49,7 @@ object Main:
     case AocPuzzle(14, 2, input) => submarine.hull.polymerization(input).steps(40).commonalityDifference
     case AocPuzzle(15, 1, input) => submarine.sensors.caves(input).lowestRisk
     case AocPuzzle(15, 2, input) => submarine.sensors.caves(input).increaseGrid(5).lowestRisk
+    case AocPuzzle(16, 1, input) => submarine.communications.transmission(input.raw.head).versionTotal
+    case AocPuzzle(16, 2, input) => submarine.communications.transmission(input.raw.head).value
     case _ => s"No solution exists for Day ${selection.day} - Part ${selection.part}."
   }
